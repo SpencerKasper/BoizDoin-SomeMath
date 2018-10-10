@@ -9,5 +9,5 @@ Or maybe you unlock other parts of the map after a certain amount of trips you c
 
 Possibly using MapBox for the game maps.
 
-
+Utilize AWS Amplify for easier integration of back-emd/user services.
 
