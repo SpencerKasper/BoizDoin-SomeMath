@@ -1,0 +1,12 @@
+Uber Tycoon Outline
+
+You start off with a map as the main screen (think google maps) and people pop-up on this map and you send an uber to pick them up. 
+In the beginning you only have like one car and you can buy more as you make money. And basically you pick the person up and  send them to their destination. 
+As you get more cars, you can do more rides at once.
+
+You'll only have part of the map unlocked in the beginning and random trips will take you out side the unlocked section and that would unlock other parts of the map. 
+Or maybe you unlock other parts of the map after a certain amount of trips you complete/maybe both ways unlock map parts.
+
+
+
+
