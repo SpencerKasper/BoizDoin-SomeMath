@@ -2,7 +2,11 @@ Uber Tycoon Outline
 
 You start off with a map as the main screen (think google maps) and people pop-up on this map and you send an uber to pick them up. 
 In the beginning you only have like one car and you can buy more as you make money. And basically you pick the person up and  send them to their destination. 
+
 As you get more cars, you can do more rides at once.
+Buy more cars to complete more trips at once.
+
+Uberpool-style trips to add complexity to the game. Make multiple stops and drop each player off at different spots.
 
 You'll only have part of the map unlocked in the beginning and random trips will take you out side the unlocked section and that would unlock other parts of the map. 
 Or maybe you unlock other parts of the map after a certain amount of trips you complete/maybe both ways unlock map parts.
@@ -11,3 +15,8 @@ Possibly using MapBox for the game maps.
 
 Utilize AWS Amplify for easier integration of back-emd/user services.
 
+User has a gas tank and each trip costs gas (fixed cost or variable?) and would either:
+	- regen over time
+	- buy more gas with earned money from trips 
+	- buy more with irl money
+Upgradable gas tank - either achievement based or bought.
