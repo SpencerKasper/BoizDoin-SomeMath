@@ -7,6 +7,7 @@ As you get more cars, you can do more rides at once.
 You'll only have part of the map unlocked in the beginning and random trips will take you out side the unlocked section and that would unlock other parts of the map. 
 Or maybe you unlock other parts of the map after a certain amount of trips you complete/maybe both ways unlock map parts.
 
+Possibly using MapBox for the game maps.
 
 
 
