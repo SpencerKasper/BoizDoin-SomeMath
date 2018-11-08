@@ -1,0 +1,92 @@
+*****************
+1. 
+This assignment felt pretty easy, was able to complete it in about an hour to an hour and a half’s worth of time. I struggled a little bit with entering an input command for integers and using that as a part of taking the total average, but after some guess and check and utilizing the int() command properly, I was able to figure it out.
+*****************
+2. 
+Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> WARNING: The version of Tcl/Tk (8.5.9) in use may be unstable.
+Visit http://www.python.org/download/mac/tcltk/ for current information.
+10/3
+3.3333333333333335
+>>> 10//3
+3
+>>> 10%3
+1
+>>> list1 = ["cat","dog","emu"]
+>>> list1
+['cat', 'dog', 'emu']
+>>> list2 = ["asp","bat","owl"]
+>>> list2
+['asp', 'bat', 'owl']
+>>> len(list1)
+3
+>>> list1 + list2
+['cat', 'dog', 'emu', 'asp', 'bat', 'owl']
+>>> list3 = [23, 45, 10]
+>>> sum(list3)
+78
+>>> hiking = [12, 23, 18]
+>>> sum(hiking) / 3
+17.666666666666668
+******************
+3.
+1) The / operator is regular division where the decimal points float to the needed number. The // operator is also a division command, however, this one will always give an integer and will round down. The % operator doesn’t divide, but shows the remainder of the two numbers if they were to be divided.
+2) An error occurs if you don’t specify the val integer as a string. You can do this by either surrounding the number with quotes or by typing in str().
+>>> val = 8
+>>> "The answer is " + val
+Traceback (most recent call last):
+  File "<pyshell#14>", line 1, in <module>
+    "The answer is " + val
+TypeError: must be str, not int
+>>> val = "8"
+>>> "The answer is " + val
+'The answer is 8'
+3) Int() gives the pure integer of a number, whereas the float() will give however many decimal places the number requires.
+>>> int(10)
+10
+>>> float(10)
+10.0
+**********************
+4.
+1) 
+i1 = input("Type in an integer. ")
+i2 = input("Type in a second integer. ")
+i3 = input("Type in a final integer. ")
+added = (int(i1)+int(i2)+int(i3))
+avg = int(added) / 3
+print("The average of these integers are " + str(avg))
+
+>>>  RESTART: /Users/WillyMoore/Documents/College/Python/Assignments/Scripts/Assn1Num1.py 
+Type in an integer. 7
+Type in a second integer. 45
+Type in a final integer. 3
+The average of these integers are 18.333333333333332
+>>> 
+ RESTART: /Users/WillyMoore/Documents/College/Python/Assignments/Scripts/Assn1Num1.py 
+Type in an integer. 6
+Type in a second integer. 1
+Type in a final integer. 2
+The average of these integers are 3.0
+
+
+2) 
+color = input("Please type in a color. ")
+action = input("Please type in a past-tense verb. ")
+animal = input("Please type in a mammal. ")
+story = ("Once upon a time, there was a " + color + " " + animal + " who " + action + " all over town. This caused quite the controversey. The people of the town banded together to chase away the " + animal)
+print(story)
+
+>>>  RESTART: /Users/WillyMoore/Documents/College/Python/Assignments/Scripts/Assn1Num2.py 
+Please type in a color. blue
+Please type in a past-tense verb. ran
+Please type in a mammal. cheetah
+Once upon a time, there was a blue cheetah who ran all over town. This caused quite the controversey. The people of the town banded together to chase away the cheetah
+>>> 
+ RESTART: /Users/WillyMoore/Documents/College/Python/Assignments/Scripts/Assn1Num2.py 
+Please type in a color. green
+Please type in a past-tense verb. danced
+Please type in a mammal. hawk
+Once upon a time, there was a green hawk who danced all over town. This caused quite the controversey. The people of the town banded together to chase away the hawk
+>>> 
