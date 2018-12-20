@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import AddIngredient from './AddIngredient';
 
 class ReactInput extends Component {
 
@@ -9,20 +10,18 @@ class ReactInput extends Component {
         <Form>
             <FormGroup>
                 <Label for="recipeName">Recipe Name:</Label>
-                <Input style={{width: '50%', textAlign: 'center'}} type="text" name="recipename" id="recipeName"/>
+                <Input  type="text" name="recipename" id="recipeName" placeholder="Enter a recipe name here."/>
             </FormGroup>
 
             <FormGroup>
-                <Label for="recipetext">Recipe:</Label>
-                <Input type="textarea" id="recipetext"></Input>
+                <Label for="ingredientEntry">Ingredient Entry:</Label>
+                <AddIngredient id="ingredientEntry"></AddIngredient>
             </FormGroup>
 
             <FormGroup>
                 <Label for="foodPhoto">Upload a photo of your recipe:</Label>
-                <Input style={{width: '50%', textAlign: 'center'}} type="file" name="photo" id="foodPhoto"></Input>
+                <Input type="file" name="photo" id="foodPhoto"></Input>
             </FormGroup>
-            <Button color="success">Submit</Button>
-            <Button color="danger">Cancel</Button>
         </Form>
       </div>
     );

@@ -4,6 +4,7 @@ import AppHeader from './AppComponents/AppHeader.js';
 import './Styles/App.css';
 import AppNavBar from './AppComponents/AppNavBar.js';
 import RecipeAddModal from './Recipes/RecipeAddModal.js';
+import Ingredient from './Recipes/Ingredient.js';
 
 class App extends Component {
   render() {
