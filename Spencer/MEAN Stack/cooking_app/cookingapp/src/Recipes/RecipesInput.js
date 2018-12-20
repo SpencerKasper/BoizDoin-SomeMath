@@ -19,6 +19,11 @@ class ReactInput extends Component {
             </FormGroup>
 
             <FormGroup>
+                <Label for="recipe">Recipe:</Label>
+                <Input type="textarea" name="recipe" id="recipe" placeholder="Enter the instructions for your recipe here."></Input>
+            </FormGroup>
+
+            <FormGroup>
                 <Label for="foodPhoto">Upload a photo of your recipe:</Label>
                 <Input type="file" name="photo" id="foodPhoto"></Input>
             </FormGroup>

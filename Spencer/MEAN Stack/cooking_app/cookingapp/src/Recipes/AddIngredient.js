@@ -4,30 +4,31 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class AddIngredient extends React.Component {
     state = {
-      numChildren: 0,
+      numIngredients: 0,
       ingredientEntryButtonLabel: "Add an Ingredient"
     }
   
     render () {
-      const children = [];
+      const ingredients = [];
   
-      for (var i = 0; i < this.state.numChildren; i += 1) {
-        children.push(<Ingredient key={i} number={i} />);
+      for (var i = 0; i < this.state.numIngredients; i += 1) {
+        ingredients.push(<Ingredient key={i} number={i} />);
+        ingredients.push(<br></br>);
       };
   
       return (
-        <ParentComponent addIngredientButtonLabel={this.state.ingredientEntryButtonLabel} addChild={this.onAddChild}>
-          {children}
-        </ParentComponent>
+        <IngredientList addIngredientButtonLabel={this.state.ingredientEntryButtonLabel} addIngredient={this.onAddIngredient}>
+          {ingredients}
+        </IngredientList>
       );
     }
   
-    onAddChild = () => {
+    onAddIngredient = () => {
       this.setState({
-        numChildren: this.state.numChildren + 1
+        numIngredients: this.state.numIngredients + 1
       });
 
-      if(this.state.numChildren != 0){
+      if(this.state.numIngredients + 1 > 0){
           this.setState({
             ingredientEntryButtonLabel: "Add Another Ingredient"
           });
@@ -35,13 +36,13 @@ class AddIngredient extends React.Component {
     }
   }
   
-  const ParentComponent = props => (
-    <div className="card calculator">
-      <div id="children-pane">
+  const IngredientList = props => (
+    <div>
+      <div>
         {props.children}
       </div>
 
-      <Button onClick={props.addChild}>{props.addIngredientButtonLabel}</Button>
+      <Button onClick={props.addIngredient}>{props.addIngredientButtonLabel}</Button>
     </div>
   );
 
