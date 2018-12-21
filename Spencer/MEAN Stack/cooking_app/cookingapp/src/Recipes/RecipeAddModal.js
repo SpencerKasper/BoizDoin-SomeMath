@@ -6,7 +6,8 @@ class RecipeAddModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      recipeName: ''
     };
 
     this.toggle = this.toggle.bind(this);
@@ -28,8 +29,8 @@ class RecipeAddModal extends React.Component {
             <RecipeInput />
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Add Recipe</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="success" onClick={this.submitRecipe}>Add Recipe</Button>{' '}
+            <Button color="danger" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>

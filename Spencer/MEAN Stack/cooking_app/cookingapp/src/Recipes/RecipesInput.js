@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import AddIngredient from './AddIngredient';
+import RecipeSteps from './RecipeSteps';
 
 class ReactInput extends Component {
 
@@ -20,7 +21,7 @@ class ReactInput extends Component {
 
             <FormGroup>
                 <Label for="recipe">Recipe:</Label>
-                <Input type="textarea" name="recipe" id="recipe" placeholder="Enter the instructions for your recipe here."></Input>
+                <RecipeSteps id="recipeSteps"></RecipeSteps>
             </FormGroup>
 
             <FormGroup>

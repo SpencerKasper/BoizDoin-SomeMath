@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, InputGroupAddon, InputGroupButtonDropdown, InputGroupDropdown, Button, Form, FormGroup, Label, Input, FormText, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupButtonDropdown, Button, Form, FormGroup, Label, Input, FormText, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Ingredient extends React.Component {
     constructor(props) {
@@ -9,6 +9,7 @@ class Ingredient extends React.Component {
         this.setQuantityDropDown = this.setQuantityDropDown.bind(this);
         this.toggleQuantityDropDown = this.toggleQuantityDropDown.bind(this);
         this.setUnitsDropDown = this.setUnitsDropDown.bind(this);
+
         this.state = {
           dropdownOpen: false,
           quantityDropDownOpen: false,
@@ -44,9 +45,9 @@ class Ingredient extends React.Component {
 
     render(){
         return(
-            <div>
+            <div id={"ingredientEntry" + this.state.number}>
                 <InputGroup>
-                    <Input id="ingredientName" type="text" placeholder={"Ingredient #" + (parseInt(this.state.number, 10) + 1)}></Input>
+                    <Input id={"ingredientName" + this.state.number} type="text" placeholder={"Ingredient #" + (parseInt(this.state.number, 10) + 1)}></Input>
                     <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.quantityDropDownOpen} toggle={this.toggleQuantityDropDown}>
                         <Dropdown isOpen={this.state.quantityDropDownOpen} toggle={this.toggleQuantityDropDown}>
                             <DropdownToggle caret>
@@ -84,6 +85,9 @@ class Ingredient extends React.Component {
                             </DropdownMenu>
                         </Dropdown> 
                     </InputGroupButtonDropdown>
+                    <InputGroupAddon addonType="append">
+                        <Button color="danger">X</Button>
+                    </InputGroupAddon>
                 </InputGroup>
             </div>
         );

@@ -27,9 +27,10 @@ router.post('/', function(req, res){
     var collection = db.get('recipes');
     collection.insert({
         recipe_name: req.body.recipe_name,
-        recipe: req.body.recipe,
+        recipe: [],
         user: req.body.user,
-        ingredients: []
+        ingredients: [],
+        comments: []
     }, function(err, recipe){
         if(err) throw err;
 
