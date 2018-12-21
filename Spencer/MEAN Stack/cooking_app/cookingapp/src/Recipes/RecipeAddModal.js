@@ -7,10 +7,34 @@ class RecipeAddModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      recipeName: ''
-    };
+      recipeName: "",
+      ingredients: [],
+      recipeSteps: []
+    }
 
+    this.handleName = this.handleName.bind(this);
+    this.handleIngredients = this.handleIngredients.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.submitRecipe = this.submitRecipe.bind(this);
+  }
+
+  handleName(name){
+    this.setState({
+      recipeName: name
+    }, () => {
+
+    })
+  }
+
+  handleIngredients(ingredients){
+    this.setState({
+      ingredients: ingredients
+    })
+  }
+
+  submitRecipe(){
+    alert(this.state.recipeName);
+    alert(JSON.stringify(this.state.ingredients));
   }
 
   toggle() {
@@ -26,7 +50,10 @@ class RecipeAddModal extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add a Recipe</ModalHeader>
           <ModalBody>
-            <RecipeInput />
+            <RecipeInput 
+              handleRecipe={this.handleRecipe} 
+              handleRecipeName={this.handleName}
+              handleIngredients={this.handleIngredients}/>
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={this.submitRecipe}>Add Recipe</Button>{' '}

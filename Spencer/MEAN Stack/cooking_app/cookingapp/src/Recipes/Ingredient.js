@@ -9,13 +9,15 @@ class Ingredient extends React.Component {
         this.setQuantityDropDown = this.setQuantityDropDown.bind(this);
         this.toggleQuantityDropDown = this.toggleQuantityDropDown.bind(this);
         this.setUnitsDropDown = this.setUnitsDropDown.bind(this);
+        this.handleIngredientName = this.handleIngredientName.bind(this);
 
         this.state = {
           dropdownOpen: false,
           quantityDropDownOpen: false,
           number: props.number,
           quantityDropDownValue: "Quantity",
-          unitsDropDownValue: "Units"
+          unitsDropDownValue: "Units",
+          ingredientName: ""
         };
       }
     
@@ -34,20 +36,64 @@ class Ingredient extends React.Component {
       setQuantityDropDown(e){
           this.setState({
             quantityDropDownValue: e.currentTarget.textContent
-          });
+          }, () => {
+            this.props.handleQuantity(this.state.quantityDropDownValue);
+
+            if(this.state.ingredientName != "" && this.state.quantityDropDownValue != "Quantity" && this.state.unitsDropDownValue != "Units"){
+                this.props.handleIngredients({
+                    name: this.state.ingredientName,
+                    quantity: this.state.quantityDropDownValue,
+                    units: this.state.unitsDropDownValue
+                })
+            }
+          })
       }
 
       setUnitsDropDown(e){
           this.setState({
               unitsDropDownValue: e.currentTarget.textContent
-          });
+          }, () => {
+            this.props.handleIngredientUnits(this.state.unitsDropDownValue);
+
+            if(this.state.ingredientName != "" && this.state.quantityDropDownValue != "Quantity" && this.state.unitsDropDownValue != "Units"){
+                this.props.handleIngredients({
+                    name: this.state.ingredientName,
+                    quantity: this.state.quantityDropDownValue,
+                    units: this.state.unitsDropDownValue
+                })
+            }
+          });   
+      }
+
+      handleIngredientName(e){
+          this.setState({
+              ingredientName: e.target.value
+          }, () => {
+            this.props.handleName(this.state.ingredientName);
+
+            if(this.state.ingredientName != "" && this.state.quantityDropDownValue != "Quantity" && this.state.unitsDropDownValue != "Units"){
+              this.props.handleIngredients({
+                  name: this.state.ingredientName,
+                  quantity: this.state.quantityDropDownValue,
+                  units: this.state.unitsDropDownValue
+              })
+            }
+          })
+
+          
       }
 
     render(){
         return(
             <div id={"ingredientEntry" + this.state.number}>
                 <InputGroup>
-                    <Input id={"ingredientName" + this.state.number} type="text" placeholder={"Ingredient #" + (parseInt(this.state.number, 10) + 1)}></Input>
+                    <Input 
+                        id={"ingredientName" + this.state.number} 
+                        type="text" 
+                        placeholder={"Ingredient #" + (parseInt(this.state.number, 10) + 1)} 
+                        value={this.state.ingredientName} 
+                        onChange={this.handleIngredientName}>
+                    </Input>
                     <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.quantityDropDownOpen} toggle={this.toggleQuantityDropDown}>
                         <Dropdown isOpen={this.state.quantityDropDownOpen} toggle={this.toggleQuantityDropDown}>
                             <DropdownToggle caret>
