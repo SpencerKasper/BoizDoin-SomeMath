@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 var monk = require('monk');
-var db = monk('localhost:27017/HW4');
+var db = monk('localhost:27017/Cooking_App');
 
 // Get all recipes
 router.get('/', function(req, res){
-    var collection = db.get('recipes');
+    var collection = db.get('Recipes');
     collection.find({}, function(err,recipes){
         if (err) throw err;
         res.json(recipes);
@@ -15,7 +15,7 @@ router.get('/', function(req, res){
 
 // Get one recipe based on ID
 router.get('/:recipeid',function(req, res){
-    var collection = db.get('recipes');
+    var collection = db.get('Recipes');
     collection.findOne({_id: req.params.recipeid}, function(err,recipe){
         if(err) throw err;
         res.json(recipe);
@@ -24,7 +24,7 @@ router.get('/:recipeid',function(req, res){
 
 // Add a recipe
 router.post('/', function(req, res){
-    var collection = db.get('recipes');
+    var collection = db.get('Recipes');
     collection.insert({
         recipe_name: req.body.recipe_name,
         recipe: [],
@@ -40,7 +40,7 @@ router.post('/', function(req, res){
 
 // Delete a recipe
 router.delete('/:recipeid', function(req,res){
-    var collection = db.get('recipes');
+    var collection = db.get('Recipes');
     collection.remove({_id: req.params.recipeid }, function(err, recipe){
         if(err) throw err;
 
