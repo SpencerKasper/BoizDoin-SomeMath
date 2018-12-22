@@ -30,6 +30,9 @@ router.post('/', function(req, res){
         password: req.body.password,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        dateOfBirth: req.body.dateOfBirth,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
         type: 'Regular'
     }, function(err, user){
         if(err) throw err;

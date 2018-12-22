@@ -5,10 +5,12 @@ import './Styles/App.css';
 import AppNavBar from './AppComponents/AppNavBar.js';
 import RecipeAddModal from './Recipes/RecipeAddModal.js';
 import LoginModal from './Login/LoginModal.js';
+import RegistrationModal from './Registration/RegistrationModal';
 
 const buttonRow = {
   display: "flex",
-  flexDirection: "row"
+  flexDirection: "row",
+  padding: "10px"
 };
 
 class App extends Component {
@@ -21,6 +23,7 @@ class App extends Component {
         <div style={buttonRow}>
           <RecipeAddModal buttonLabel="Add Recipe"/>
           <LoginModal buttonLabel="Log In" />
+          <RegistrationModal />
         </div>
         
       </div>
