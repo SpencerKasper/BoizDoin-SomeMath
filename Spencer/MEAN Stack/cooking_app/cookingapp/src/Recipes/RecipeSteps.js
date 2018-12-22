@@ -13,6 +13,13 @@ class RecipeSteps extends React.Component {
         super(props);
 
         this.removeIngredient = this.removeIngredient.bind(this);
+        this.handleSteps = this.handleSteps.bind(this);
+    }
+
+    handleSteps(steps){
+      this.setState({
+        steps: steps
+      })
     }
 
     removeIngredient(id){
@@ -29,7 +36,7 @@ class RecipeSteps extends React.Component {
       const steps = [];
   
       for (var i = 0; i < this.state.numSteps; i += 1) {
-        steps.push(<RecipeStep id={"recipeStep" + i} key={i} number={i} />);
+        steps.push(<RecipeStep id={"recipeStep" + i} steps={this.state.steps} handleSteps={this.handleSteps} key={i} number={i} />);
         steps.push(<br></br>);
       };
 
@@ -42,14 +49,16 @@ class RecipeSteps extends React.Component {
   
     onAddStep = () => {
       this.setState({
-        numSteps: this.state.numSteps + 1,
-      });
-
-      if(this.state.numSteps + 1 > 0){
+        numSteps: this.state.numSteps + 1
+      }, () => {
+        if(this.state.numSteps + 1 > 0){
           this.setState({
             stepEntryButtonLabel: "Add Another Step"
+          }, () => {
+            this.props.handleRecipeSteps(this.state.steps);
           });
-      }
+        }
+      });
     }
   }
   

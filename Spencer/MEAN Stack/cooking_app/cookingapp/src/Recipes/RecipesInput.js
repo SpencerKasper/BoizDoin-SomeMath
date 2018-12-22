@@ -32,6 +32,12 @@ class ReactInput extends Component {
         });
     }
 
+    handleSteps(steps){
+        this.setState({
+            recipeSteps: steps
+        })
+    }
+
   render() {
     return (
       <div>
@@ -54,7 +60,7 @@ class ReactInput extends Component {
 
             <FormGroup>
                 <Label for="recipe">Recipe:</Label>
-                <RecipeSteps id="recipeSteps"></RecipeSteps>
+                <RecipeSteps id="recipeSteps" handleRecipeSteps={this.props.handleRecipeSteps}></RecipeSteps>
             </FormGroup>
 
             <FormGroup>
