@@ -14,12 +14,20 @@ const buttonRow = {
 };
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      userLoggedIn: false,
+      loggedInUserName: "Log In or Sign Up!"
+    }
+  }
 
   render() {
     return (
       <div>
         <AppHeader />
-        <AppNavBar />
+        <AppNavBar loggedInUserName={this.state.loggedInUserName}/>
         <div style={buttonRow}>
           <RecipeAddModal buttonLabel="Add Recipe"/>
           <LoginModal buttonLabel="Log In" />

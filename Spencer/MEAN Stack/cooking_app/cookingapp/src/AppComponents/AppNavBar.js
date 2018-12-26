@@ -13,7 +13,7 @@ class AppNavBar extends Component {
     return (
       <div className="topnav">
         <a className="applink" href="#">Home</a>
-        <p style={loggedInText}>Logged in as Spencer Kasper</p>
+        <p style={loggedInText}>{this.props.loggedInUserName}</p>
       </div>
     );
   }
