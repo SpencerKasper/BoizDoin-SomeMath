@@ -27,11 +27,9 @@ class App extends Component {
     return (
       <div>
         <AppHeader />
-        <AppNavBar loggedInUserName={this.state.loggedInUserName}/>
+        <AppNavBar />
         <div style={buttonRow}>
           <RecipeAddModal buttonLabel="Add Recipe"/>
-          <LoginModal buttonLabel="Log In" />
-          <RegistrationModal />
         </div>
         
       </div>

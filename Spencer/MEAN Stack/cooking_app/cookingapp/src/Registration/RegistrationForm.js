@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import InputItemGroup from '../AppComponents/InputItemGroup';
 import ErrorMessage from '../Error/ErrorMessage';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 var validator = require("email-validator");
 
 class RegistrationForm extends Component {
@@ -18,12 +22,14 @@ class RegistrationForm extends Component {
           lastNameError: "",
           email: "",
           emailError: "",
-          birthday: "12/23/1996",
+          birthday: new Date(),
           birthdayError: "",
           password1: "",
           password2: "",
-          passwordErrors: [],
-          phoneNumber: "2245679847",
+          password1Error: "",
+          password2Error: "",
+          allowPasswordSubmit: false,
+          phoneNumber: "",
           phoneNumberError: "",
           type: "Regular"
       }
@@ -84,7 +90,7 @@ class RegistrationForm extends Component {
         var lastNameError = "";
 
         if(this.state.lastName == ""){
-            lastNameError = "You must enter a lasst name.";
+            lastNameError = "You must enter a last name.";
         }
 
         setLastNameError(lastNameError);
@@ -121,27 +127,71 @@ class RegistrationForm extends Component {
     })
   }
 
-  handleBirthday(event){
+  handleBirthday(birthday){
       this.setState({
-          birthday: event.target.value
+          birthday: birthday
       }, () => {
           this.props.handleBirthday(this.state.birthday);
       })
   }
 
-  handlePassword1(event){
+  handlePassword1(password1, setPassword1Error){
     this.setState({
-        password1: event.target.value
+        password1: password1
     }, () => {
-        this.props.handlePassword1(this.state.password1);
+        var password1Error = "";
+
+        if(this.state.password1 == ""){
+            password1Error = "You must enter a password.";
+        }
+
+        if(this.state.password1.length < 7 && this.state.password1 != ""){
+            password1Error = "Your password must be at least 7 characters long.";
+        }
+
+        setPassword1Error(password1Error);
+
+        this.setState({
+            password1Error: password1Error
+        }, () => {
+            this.props.handlePassword1(this.state.password1);
+
+            if(this.state.password1Error == "" && this.state.password2Error == ""){
+                this.setState({
+                    allowPasswordSubmit: true
+                }, () => {
+                    //alert(this.state.allowPasswordSubmit);
+                })
+            }
+        })
     })
   }
 
-  handlePassword2(event){
+  handlePassword2(password2, setPassword2Error){
     this.setState({
-        password2: event.target.value
+        password2: password2
     }, () => {
-        this.props.handlePassword2(this.state.password2);
+        var password2Error = "";
+
+        if(this.state.password1 != this.state.password2){
+            password2Error = "Passwords do not currently match.";
+        }
+
+        setPassword2Error(password2Error);
+
+        this.setState({
+            password2Error: password2Error
+        }, () => {
+            this.props.handlePassword2(this.state.password2);
+
+            if(this.state.password1Error == "" && this.state.password2Error == ""){
+                this.setState({
+                    allowPasswordSubmit: true
+                }, () => {
+                    //alert(this.state.allowPasswordSubmit);
+                })
+            }
+        })
     })
   }
   
@@ -176,25 +226,46 @@ class RegistrationForm extends Component {
             <InputItemGroup
                 labelName={"Email:"}
                 inputType={"email"}
-                placeholder={"Enter your email here. (Ex: myemail@email.com"}
+                placeholder={"Enter your email here. (Ex: myemail@email.com)"}
                 errorMessage={this.state.emailError}
                 shareItemValue={this.handleEmail}
             />
 
             <FormGroup>
-                <Label for="birthday">Birthday:</Label>
-                <Input type="text" name="birthday" id="birthday" placeholder="Enter your birthday" onBlur={this.handleBirthday}></Input>
+                <Label for="phoneNumber">Phone Number:</Label>
+                <PhoneInput
+                    placeholder="Enter phone number"
+                    value={this.state.phoneNumber}
+                    onChange={phoneNumber => 
+                        this.setState({phoneNumber}, 
+                        () => {this.props.handlePhoneNumber(this.state.phoneNumber)})}
+                />
             </FormGroup>
 
             <FormGroup>
-                <Label for="password">Password:</Label>
-                <Input type="password" name="password" id="password" placeholder="Enter your password here. " onBlur={this.handlePassword1}></Input>
+                <Label for="birthdayPicker">Birthday:</Label><br></br>
+                <DatePicker
+                    id="birthdayPicker"
+                    selected={this.state.birthday}
+                    onChange={this.handleBirthday}
+                />
             </FormGroup>
 
-            <FormGroup>
-                <Label for="passwordConfirm">Enter passsword again:</Label>
-                <Input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Please re-enter your password here." onBlur={this.handlePassword2}></Input>
-            </FormGroup>
+            <InputItemGroup
+                labelName={"Password:"}
+                inputType={"password"}
+                placeholder={"Enter your password here."}
+                errorMessage={this.state.passwordError}
+                shareItemValue={this.handlePassword1}
+            />
+
+            <InputItemGroup
+                labelName={"Re-enter Password:"}
+                inputType={"password"}
+                placeholder={"Re-enter your password here."}
+                errorMessage={this.state.passwordError2}
+                shareItemValue={this.handlePassword2}
+            />
         </Form>
       </div>
     );

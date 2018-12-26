@@ -3,13 +3,18 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ErrorMessage from '../Error/ErrorMessage';
 import ErrorMessageList from '../Error/ErrorMessageList';
 
+const loggedInText = {
+  color: "white"
+};
+
 class AppModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       errorMessageList: [],
-      modalTitle: this.props.modalTitle
+      modalTitle: this.props.modalTitle,
+      openButtonLink: this.props.openButtonLink
     };
 
     this.toggle = this.toggle.bind(this);
@@ -24,7 +29,7 @@ class AppModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <a onClick={this.toggle} style={loggedInText}>{this.state.openButtonLink}</a>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.state.modalTitle}</ModalHeader>
           <ModalBody>

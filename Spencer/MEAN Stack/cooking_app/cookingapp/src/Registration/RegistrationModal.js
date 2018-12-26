@@ -14,6 +14,7 @@ class RegistrationModal extends React.Component {
         lastName: "",
         email: "",
         birthday: "",
+        phoneNumber: "",
         password1: "",
         password2: "",
         passwordsMatch: true,
@@ -28,12 +29,12 @@ class RegistrationModal extends React.Component {
     this.handleLastName= this.handleLastName.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleBirthday = this.handleBirthday.bind(this);
+    this.handlePhoneNumber = this.handlePhoneNumber.bind(this);
     this.handlePassword1 = this.handlePassword1.bind(this);
     this.handlePassword2 = this.handlePassword2.bind(this);
     this.validatePasswordsAndBuildMessages = this.validatePasswordsAndBuildMessages.bind(this);
     this.validateUser = this.validateUser.bind(this);
     this.registerUser = this.registerUser.bind(this);
-    this.buildErrorMessages = this.buildErrorMessages.bind(this);
 }
 
   handleUserName(userName){
@@ -65,6 +66,14 @@ class RegistrationModal extends React.Component {
   handleBirthday(birthday){
       this.setState({
           birthday: birthday
+      })
+  }
+
+  handlePhoneNumber(phoneNumber){
+      this.setState({
+          phoneNumber: phoneNumber
+      }, () => {
+          //alert(this.state.phoneNumber);
       })
   }
 
@@ -115,9 +124,7 @@ class RegistrationModal extends React.Component {
         passwordsMatch: passwordsMatch,
         validUser: validUser
     }, () => {
-        if(messages != null && messages.length > 0){
-            this.buildErrorMessages();
-        }
+
     })
   }
 
@@ -159,21 +166,8 @@ class RegistrationModal extends React.Component {
 
   registerUser(){
     this.validateUser();
-  }
 
-  buildErrorMessages(){
-    var listErrors = this.state.errors;
-    var listErrorMessage = [];
-
-    for(var i = 0; i < listErrors.length; i++){
-        listErrorMessage.push(<ErrorMessage errorMessage={listErrors[i]} />)
-    }
-
-    this.setState({
-        errorMessageList: <ErrorMessageList errorMessages={listErrorMessage} />
-    }, () => {
- 
-    })
+    
   }
 
   render() {
@@ -189,12 +183,14 @@ class RegistrationModal extends React.Component {
                 handleLastName={this.handleLastName}
                 handleEmail={this.handleEmail}
                 handleBirthday={this.handleBirthday}
+                handlePhoneNumber={this.handlePhoneNumber}
                 />}
             buttonLabel={"Sign Up"}
             submitButtonName={"Register"}
             submitFunction={this.registerUser}
             errorMessageList={this.state.errorMessageList}
             modalTitle={"Register Now"}
+            openButtonLink={"Register"}
         />
       </div>
     );

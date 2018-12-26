@@ -3,6 +3,10 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import RecipeInput from './RecipesInput.js';
 import axios from 'axios';
 
+const loggedInText = {
+  color: "white"
+};
+
 class RecipeAddModal extends React.Component {
   constructor(props) {
     super(props);
@@ -74,8 +78,7 @@ class RecipeAddModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="primary" 
-          onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <a onClick={this.toggle} style={loggedInText}>Add a Recipe</a>
         <Modal isOpen={this.state.modal} 
           toggle={this.toggle} 
           className={this.props.className}>
