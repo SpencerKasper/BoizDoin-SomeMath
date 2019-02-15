@@ -5,8 +5,6 @@ import RegistrationModal from '../Registration/RegistrationModal';
 import LoginModal from '../Login/LoginModal';
 
 const loggedInText = {
-  textAlign: "right", 
-  padding: "10px", 
   color: "white"
 };
 
@@ -22,7 +20,7 @@ class AppNavBar extends Component {
   render() {
     return (
       <div className="topnav">
-        <a className="applink" href="#">Home</a>
+        <a style={loggedInText} className="applink">Home</a>
         <RecipeAddModal buttonLabel="Add Recipe"/>
         <LoginModal buttonLabel="Log In" />
         <RegistrationModal />

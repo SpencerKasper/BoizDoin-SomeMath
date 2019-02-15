@@ -3,6 +3,7 @@ import AppModal from '../AppComponents/AppModal.js';
 import RegistrationForm from '../Registration/RegistrationForm';
 import ErrorMessage from '../Error/ErrorMessage';
 import ErrorMessageList from '../Error/ErrorMessageList';
+import Axios from 'axios';
 
 class RegistrationModal extends React.Component {
   constructor(props) {
@@ -167,7 +168,11 @@ class RegistrationModal extends React.Component {
   registerUser(){
     this.validateUser();
 
-    
+    if(this.state.validUser){
+        Axios.post({
+            
+        })
+    }
   }
 
   render() {

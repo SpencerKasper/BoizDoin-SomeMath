@@ -3,10 +3,17 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import InputItemGroup from '../AppComponents/InputItemGroup';
 import ErrorMessage from '../Error/ErrorMessage';
 import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput  from 'react-phone-number-input';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 var validator = require("email-validator");
+
+const errorStyle = {
+    color: "red",
+    fontWeight: "bold",
+    fontSize: "12px",
+    textAlign: "center"
+};
 
 class RegistrationForm extends Component {
     //Add code here to set the state values of each of th form inputs
@@ -238,8 +245,28 @@ class RegistrationForm extends Component {
                     value={this.state.phoneNumber}
                     onChange={phoneNumber => 
                         this.setState({phoneNumber}, 
-                        () => {this.props.handlePhoneNumber(this.state.phoneNumber)})}
+                        () => {
+                            this.props.handlePhoneNumber(this.state.phoneNumber);
+
+                            if(this.state.phoneNumber == ""){
+                                this.setState({
+                                    phoneNumberError: "You must enter a phone number."
+                                }, () => {
+                                    
+                                })
+                            }
+
+                            else{
+                                this.setState({
+                                    phoneNumberError: ""
+                                })
+                            }
+                        })
+                    }
                 />
+                <div>
+                    <p style={errorStyle}>{this.state.phoneNumberError}</p>
+                </div>
             </FormGroup>
 
             <FormGroup>
